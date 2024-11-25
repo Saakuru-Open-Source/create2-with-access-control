@@ -1,14 +1,14 @@
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { DeployFunction } from 'hardhat-deploy/types';
 import { ethers } from 'hardhat';
-import { Create2Factory } from '../dist/types';
+import { Create2FactoryV2 } from '../dist/types/Create2FactoryV2';
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await hre.getNamedAccounts();
   const { log, get } = hre.deployments;
 
-  const deployerContractDeployment = await get('Create2Factory');
-  const create2Factory = await ethers.getContractAt('Create2Factory', deployerContractDeployment.address) as Create2Factory;
+  const deployerContractDeployment = await get('Create2FactoryV2');
+  const create2Factory = await ethers.getContractAt('Create2FactoryV2', deployerContractDeployment.address) as Create2FactoryV2;
 
 
   // Get the TokenERC20 contract factory and bytecode
@@ -60,5 +60,5 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 export default func;
 
 func.id = 'TokenERC20'; // Unique id for the deploy script
-func.tags = ['hardhat', 'erc20'];
-func.dependencies = ['Create2Factory'];
+func.tags = ['hardhat', 'erc20v2'];
+func.dependencies = ['Create2FactoryV2'];

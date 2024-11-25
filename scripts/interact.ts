@@ -11,8 +11,6 @@ const main = async () => {
   const contracts = getContracts();
 
   const DEPLOYER_ROLE = ethers.utils.keccak256(ethers.utils.toUtf8Bytes('DEPLOYER_ROLE'));
-      
-
 };
 
 main()

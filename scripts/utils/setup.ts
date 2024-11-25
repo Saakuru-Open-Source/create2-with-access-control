@@ -1,13 +1,14 @@
 import * as ethers from 'ethers';
 import * as dotenv  from 'dotenv';
 import { networks } from '../../helpers/networks';
-import { Create2Factory } from '../../dist/types';
+import { Create2Factory, Create2FactoryV2 } from '../../dist/types';
 
 dotenv.config();
 
 console.log('Running... ', process.env.NETWORK);
 
 const create2 = require(`../../deployments/${process.env.NETWORK}/Create2Factory.json`);
+const create2V2 = require(`../../deployments/${process.env.NETWORK}/Create2FactoryV2.json`);
 // const erc20 = require(`../../deployments/${process.env.NETWORK}/TokenERC20.json`);
 
 export const deployments = {
@@ -23,6 +24,7 @@ export const wallet = new ethers.Wallet(networks[process.env.NETWORK || '0'].acc
 export const getContracts = () => {
   return {
     create2: new ethers.Contract(create2.address, create2.abi, wallet) as Create2Factory,
+    create2V2: new ethers.Contract(create2V2.address, create2V2.abi, wallet) as Create2FactoryV2,
     // erc20: new ethers.Contract(erc20.address, erc20.abi, wallet) as TokenERC20,
   };
 };
