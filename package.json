@@ -13,7 +13,8 @@
     "deploy:saakuruTestnet": "hardhat deploy --network saakuruTestnet --tags",
     "deploy:saakuruMainnet": "hardhat deploy --network saakuruMainnet --tags",
     "interact": "ts-node scripts/interact.ts",
-    "generate:wallet": "ts-node scripts/generateWallet.ts"
+    "generate:wallet": "ts-node scripts/generateWallet.ts",
+    "deployProxy": "ts-node scripts/deployProxy.ts"
   },
   "dependencies": {
     "@harmony-js/core": "^0.1.57",
